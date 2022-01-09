@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  vbas:
+    container_name: vbas
+    image: vbas
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    volumes:
+      # bind mount
+      - ./app:/app
+      # named mount log
+      - logs:/app/logs
+      # anonymous mount
+      - /app/node_modules
+    env_file:
+      - ./app/.env
+    ports:
+      - "8080:8080"
+
+volumes:
+  logs:

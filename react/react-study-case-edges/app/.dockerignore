@@ -1,0 +1,4 @@
+.env
+.eslintcache
+.gitignore
+Dockerfile
