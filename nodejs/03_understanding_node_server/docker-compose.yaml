@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  node_server:
+    container_name: node_server
+    image: node_server
+    build:
+      context: ./node_server
+      dockerfile: Dockerfile
+    volumes:
+      # named volume
+      - logs:/app/logs
+      # bind volume
+      - ./node_server:/app
+      # anonymous volume
+      - /node_server/node_modules
+    ports:
+      - 3000:3000
+  
+
+volumes:
+  logs:
