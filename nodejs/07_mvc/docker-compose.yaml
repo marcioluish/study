@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  mvc:
+    container_name: mvc
+    image: mvc
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    volumes:
+      # named volume
+      - logs:/app/logs
+      # bind volume
+      - ./app:/app
+      # anonymous volume
+      - /app/node_modules
+    ports:
+      - 3000:3000
+      - 9229:9229
+  
+
+volumes:
+  logs:
